@@ -1,0 +1,17 @@
+# IDEA specific
+*.iml
+.idea/
+
+# NPM
+node_modules/
+typings/
+npm-debug.log
+
+#Typescript
+client/app/**/*.js
+client/app/**/*.map
+
+logs/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
