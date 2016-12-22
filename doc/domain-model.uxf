@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>100</x>
+      <y>240</y>
+      <w>230</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Employee
+--
+firstName: String
+lastName: String
+gender: String (FEMALE|MALE)
+dayOfBirth: Date
+nationality: String
+phoneNumber: Integer
+imageBase64: String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>40</y>
+      <w>190</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Address
+--
+street: String
+houseNumber: String
+postCode: String
+city: String
+state: String
+country: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>190</y>
+      <w>190</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>User
+--
+username: String
+email: String
+password: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>290</y>
+      <w>350</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>TermsOfEmployment
+--
+entryDate: Date
+company: String
+personnelNumber: Integer
+location: String
+state: String (EMPLOYEE|MANAGER|EXTERNAL)
+quittingDate: Date
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>450</y>
+      <w>190</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>BankAccount
+--
+accountHolder: String
+bank: String
+iban: String
+bic: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>560</y>
+      <w>230</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Payment
+--
+salary: Integer
+validFrom: Date
+weeklyWorkingHours: Integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>60</y>
+      <w>240</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+r1=address</panel_attributes>
+    <additional_attributes>220.0;20.0;70.0;20.0;70.0;260.0;10.0;260.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>200</y>
+      <w>240</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+r1=user</panel_attributes>
+    <additional_attributes>220.0;20.0;70.0;20.0;70.0;120.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>300</y>
+      <w>240</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+r1=terms</panel_attributes>
+    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>310</y>
+      <w>240</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+r1=account</panel_attributes>
+    <additional_attributes>220.0;180.0;70.0;180.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>320</x>
+      <y>310</y>
+      <w>240</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*
+r1=payments</panel_attributes>
+    <additional_attributes>220.0;280.0;70.0;280.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

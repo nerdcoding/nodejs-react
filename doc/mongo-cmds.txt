@@ -1,0 +1,25 @@
+MongoDB
+=======
+
+show dbs
+use <dbname>
+db.dropDatabase()
+
+show collections
+db.<collectionname>.find()
+db.<collectionname>.insert({ "name": "Friedolin" })
+
+# drops the whole collection
+db.<collectionname>.drop()
+
+# Updates (overwrites) the found object with the specified object; does nothing when found nothing
+db.posts.update({"lastName": "Meyer"}, {"firstName": "Heide", "lastName": "Witzka"})
+
+# Updates (overwrites) the found document with the specified document; insert when found nothing
+db.posts.update({"lastName": "Meyer"}, {"firstName": "Heide", "lastName": "Witzka"}, {upsert: true})
+
+# Insert when invoked without existing _id; update when invoked with valid _id
+db.posts.save({"title":"Second Post", "user": "alice"})
+
+# Remove all documents
+db.posts.remove(
