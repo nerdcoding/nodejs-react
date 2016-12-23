@@ -19,8 +19,8 @@
 var express = require('express');
 var router = express.Router();
 
-var employeeController = require('../controllers/employees');
-var paymentsController = require('../controllers/payments');
+var employeeController = require('../controllers/employee-controller');
+var paymentsController = require('../controllers/payment-controller');
 
 // employees
 router.post('/employees', employeeController.createEmployee);
