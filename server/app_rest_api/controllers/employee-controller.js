@@ -16,6 +16,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
+var employeeDao = require('../../app_server/dao/employee-dao');
+
 module.exports.createEmployee = function(req, res) {
     console.log('createEmployee');
     sendJsonResponse(res, 200, {
@@ -25,10 +27,12 @@ module.exports.createEmployee = function(req, res) {
 };
 
 module.exports.findAllEmployees = function(req, res) {
-    console.log('findAllEmployees');
-    sendJsonResponse(res, 200, {
-        "method": "findAllEmployees",
-        "parameter": ""
+    employeeDao.findAllEmployees(function(err, employees) {
+        if (err) {
+            sendJsonResponse(res, 404, err);
+        } else {
+            sendJsonResponse(res, 200, employees);
+        }
     });
 };
 

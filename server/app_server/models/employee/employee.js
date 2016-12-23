@@ -37,6 +37,6 @@ var employeeSchema = new mongoose.Schema({
     payments: [payment.paymentSchema],
     termsOfEmployment: termsOfEmployment.termsOfEmploymentSchema,
     user: {type: user.userSchema, required: true}
-});
+}, { collection: 'employee' });
 
 mongoose.model('Employee', employeeSchema);
