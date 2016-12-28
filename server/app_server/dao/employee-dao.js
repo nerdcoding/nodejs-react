@@ -30,17 +30,59 @@ module.exports.findAllEmployees = function(callback) {
                 callback("", employees);
             }
         });
-
 };
 
-module.exports.findEmployeeById = function(req, res) {
+module.exports.findEmployeeById = function(employeeId, callback) {
+    Employee
+        .findById(employeeId)
+        .select('-payments')
+        .exec(function(err, employee) {
+            if (err) {
+                callback(err);
+            } else {
+                callback("", employee);
+            }
+        });
 };
 
-module.exports.createEmployee = function(req, res) {
+module.exports.createEmployee = function(employee, callback) {
+    Employee
+        .create(employee, function(err, createdEmployee) {
+            if (err) {
+                callback(err);
+            } else {
+                callback("", createdEmployee);
+            }
+        });
 };
 
-module.exports.updateEmployee = function(req, res) {
+module.exports.updateEmployee = function(employeeId, updatedEmployee, callback) {
+    module.exports.findEmployeeById(employeeId, function(err, employeeToUpdate) {
+        if (err) {
+            callback(err);
+        } else {
+            employeeToUpdate.firstName = updatedEmployee.firstName;
+            // TODO update all other fields
+
+            employeeToUpdate.save(function(err, savedEmployee) {
+                if (err) {
+                    callback(err);
+                } else {
+                    callback("", savedEmployee);
+                }
+            });
+        }
+    });
 };
 
-module.exports.deleteEmployee = function(req, res) {
+module.exports.deleteEmployee = function(employeeId, callback) {
+    Employee
+        .findByIdAndRemove(employeeId)
+        .exec(function(err, employee) {
+            if (err) {
+                callback(err);
+            } else {
+                callback("", employee);
+            }
+        });
 };

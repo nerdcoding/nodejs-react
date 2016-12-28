@@ -19,11 +19,19 @@
 var employeeDao = require('../../app_server/dao/employee-dao');
 
 module.exports.createEmployee = function(req, res) {
-    console.log('createEmployee');
-    sendJsonResponse(res, 200, {
-        "method": "createEmployee",
-        "parameter": ""
-    });
+    if (req.body) {
+        employeeDao.createEmployee(req.body, function(err, createdEmployee) {
+            if (err) {
+                sendJsonResponse(res, 400, err);
+            } else {
+                sendJsonResponse(res, 200, createdEmployee);
+            }
+        });
+    } else {
+        sendJsonResponse(res, 400, {
+            "message": "No employee was provided"
+        });
+    }
 };
 
 module.exports.findAllEmployees = function(req, res) {
@@ -37,27 +45,51 @@ module.exports.findAllEmployees = function(req, res) {
 };
 
 module.exports.findEmployeeById = function(req, res) {
-    console.log('findEmployeeById');
-    sendJsonResponse(res, 200, {
-        "method": "findEmployeeById",
-        "parameter": req.params.employeeId
-    });
+    if (req.params && req.params.employeeId) {
+        employeeDao.findEmployeeById(req.params.employeeId, function(err, employee) {
+            if (err) {
+                sendJsonResponse(res, 404, err);
+            } else {
+                sendJsonResponse(res, 200, employee);
+            }
+        });
+    } else {
+        sendJsonResponse(res, 400, {
+            "message": "No employeeId was provided"
+        });
+    }
 };
 
 module.exports.updateEmployee = function(req, res) {
-    console.log('updateEmployee');
-    sendJsonResponse(res, 200, {
-        "method": "updateEmployee",
-        "parameter": req.params.employeeId
-    });
+    if (req.params && req.params.employeeId && req.body) {
+        employeeDao.updateEmployee(req.params.employeeId, req.body, function(err, updatedEmployee) {
+            if (err) {
+                sendJsonResponse(res, 404, err);
+            } else {
+                sendJsonResponse(res, 200, updatedEmployee);
+            }
+        });
+    } else {
+        sendJsonResponse(res, 400, {
+            "message": "No employeeId or no employee was provided"
+        });
+    }
 };
 
 module.exports.deleteEmployee = function(req, res) {
-    console.log('deleteEmployee');
-    sendJsonResponse(res, 200, {
-        "method": "deleteEmployee",
-        "parameter": req.params.employeeId
-    });
+    if (req.params && req.params.employeeId) {
+        employeeDao.deleteEmployee(req.params.employeeId, function(err, deletedEmployee) {
+            if (err) {
+                sendJsonResponse(res, 404, err);
+            } else {
+                sendJsonResponse(res, 200, deletedEmployee);
+            }
+        });
+    } else {
+        sendJsonResponse(res, 400, {
+            "message": "No employeeId was provided"
+        });
+    }
 };
 
 var sendJsonResponse = function(res, status, content) {
