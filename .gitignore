@@ -7,6 +7,9 @@ node_modules/
 typings/
 npm-debug.log
 
+# webpack generation
+dist/
+
 #Typescript
 client/app/**/*.js
 client/app/**/*.map
@@ -15,3 +18,4 @@ logs/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+client/package.json
