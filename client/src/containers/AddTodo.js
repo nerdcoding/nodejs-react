@@ -1,5 +1,5 @@
 /*
- * app.js
+ * AddTodo.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,23 +16,35 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from 'react-redux'
-import store from './store';
-import Footer from './components/Footer';
-import AddTodo from './containers/AddTodo';
-import VisibleTodoList from './containers/VisibleTodoList';
+import React from 'react'
+import { connect } from 'react-redux'
+import { addTodo } from '../actions'
 
+class AddTodo extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }
 
-ReactDOM.render(
-    <Provider store={store}>
-        <div>
-            <AddTodo />
-            <VisibleTodoList />
-            <Footer />
-        </div>
-    </Provider>,
-    document.getElementById('mount')
-);
+    render() {
+        const {dispatch} = this.props;
+        var input;
+
+        return <diV>
+            <form onSubmit={e => {
+                e.preventDefault();
+                if (!input.value.trim()) {
+                    return;
+                }
+                dispatch(addTodo(input.value)); }}>
+
+                <input ref={node => { input = node }}/>
+                <button type="submit">
+                    Add Todo
+                </button>
+            </form>
+        </diV>
+    }
+}
+
+export default connect()(AddTodo);

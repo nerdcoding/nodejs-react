@@ -1,5 +1,5 @@
 /*
- * app.js
+ * Link.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,23 +16,24 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from 'react-redux'
-import store from './store';
-import Footer from './components/Footer';
-import AddTodo from './containers/AddTodo';
-import VisibleTodoList from './containers/VisibleTodoList';
+import React from 'react';
 
+export default function Link({active, children, onClick}) {
+    if (active) {
+        return <span>{children}</span>
+    }
+    return (
+        <a href="=#" onClick={e => {
+                        e.preventDefault();
+                        onClick()
+                     }}>
+            {children}
+        </a>
+    );
+}
 
-
-ReactDOM.render(
-    <Provider store={store}>
-        <div>
-            <AddTodo />
-            <VisibleTodoList />
-            <Footer />
-        </div>
-    </Provider>,
-    document.getElementById('mount')
-);
+Link.propTypes = {
+    active: React.PropTypes.bool.isRequired,
+    children: React.PropTypes.node.isRequired,
+    onClick: React.PropTypes.func.isRequired
+};

@@ -1,5 +1,5 @@
 /*
- * app.js
+ * ActionTypes.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,23 +16,6 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from 'react-redux'
-import store from './store';
-import Footer from './components/Footer';
-import AddTodo from './containers/AddTodo';
-import VisibleTodoList from './containers/VisibleTodoList';
-
-
-
-ReactDOM.render(
-    <Provider store={store}>
-        <div>
-            <AddTodo />
-            <VisibleTodoList />
-            <Footer />
-        </div>
-    </Provider>,
-    document.getElementById('mount')
-);
+export const ADD_TODO = 'ADD_TODO';
+export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
+export const TOGGLE_TODO = 'TOGGLE_TODO';

@@ -1,5 +1,5 @@
 /*
- * app.js
+ * index.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,23 +16,27 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from 'react-redux'
-import store from './store';
-import Footer from './components/Footer';
-import AddTodo from './containers/AddTodo';
-import VisibleTodoList from './containers/VisibleTodoList';
+import {ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO} from '../constants/ActionTypes';
 
+var nextTodoId = 0;
+export function addTodo(text) {
+    return {
+        type: ADD_TODO,
+        id: nextTodoId++,
+        text
+    };
+}
 
+export function setVisibilityFilter(filter) {
+    return {
+        type: SET_VISIBILITY_FILTER,
+        filter
+    };
+}
 
-ReactDOM.render(
-    <Provider store={store}>
-        <div>
-            <AddTodo />
-            <VisibleTodoList />
-            <Footer />
-        </div>
-    </Provider>,
-    document.getElementById('mount')
-);
+export function toggleTodo(id) {
+    return {
+        type: TOGGLE_TODO,
+        id
+    };
+}

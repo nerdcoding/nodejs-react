@@ -1,5 +1,5 @@
 /*
- * app.js
+ * Footer.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,23 +16,25 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from 'react-redux'
-import store from './store';
-import Footer from './components/Footer';
-import AddTodo from './containers/AddTodo';
-import VisibleTodoList from './containers/VisibleTodoList';
+import React from 'react';
+import FilterLink from '../containers/FilterLink';
 
-
-
-ReactDOM.render(
-    <Provider store={store}>
-        <div>
-            <AddTodo />
-            <VisibleTodoList />
-            <Footer />
-        </div>
-    </Provider>,
-    document.getElementById('mount')
-);
+export default function Footer() {
+    return (
+        <p>
+            Show:
+            {" "}
+            <FilterLink filter="SHOW_ALL">
+                All
+            </FilterLink>
+            {", "}
+            <FilterLink filter="SHOW_ACTIVE">
+                Active
+            </FilterLink>
+            {", "}
+            <FilterLink filter="SHOW_COMPLETED">
+                Completed
+            </FilterLink>
+        </p>
+    );
+}

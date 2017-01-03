@@ -1,5 +1,5 @@
 /*
- * app.js
+ * store.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,23 +16,22 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from 'react-redux'
-import store from './store';
-import Footer from './components/Footer';
-import AddTodo from './containers/AddTodo';
-import VisibleTodoList from './containers/VisibleTodoList';
+import {createStore, combineReducers} from 'redux';
+import todos from './reducers/todos';
+import visibilityFilter from './reducers/visibilityFilter';
 
+const appStore = createStore(combineReducers({
+    todos,
+    visibilityFilter
+}));
 
+export default appStore;
 
-ReactDOM.render(
-    <Provider store={store}>
-        <div>
-            <AddTodo />
-            <VisibleTodoList />
-            <Footer />
-        </div>
-    </Provider>,
-    document.getElementById('mount')
-);
+/*export default function appStore(state = {}, action) {
+    return {
+        visibilityFilter: visibilityFilter(state.visibilityFilter, action),
+        todos: todos(state.todos, action)
+    }
+}
+
+const todoApp = combineReducers()*/

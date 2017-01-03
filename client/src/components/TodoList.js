@@ -1,5 +1,5 @@
 /*
- * app.js
+ * TodoList.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -17,11 +17,25 @@
  */
 
 import React from 'react';
+import Todo from './Todo';
 
-export default class Hello extends React.Component {
-
-    render() {
-        return <p>Hello React!</p>;
-    }
-
+export default function TodoList({todos, onTodoClick}) {
+    return (
+        <ul>
+            {todos.map(todo =>
+                <Todo key={todo.id}
+                      {...todo}
+                      onClick={() => onTodoClick(todo.id)} />
+            )}
+        </ul>
+    );
 }
+
+TodoList.propTypes = {
+    todos: React.PropTypes.arrayOf(React.PropTypes.shape({
+        id: React.PropTypes.number.isRequired,
+        completed: React.PropTypes.bool.isRequired,
+        text: React.PropTypes.string.isRequired
+    })).isRequired,
+    onTodoClick: React.PropTypes.func.isRequired
+};
