@@ -20,8 +20,8 @@ const path = require('path');
 const Server = require('hapi').Server;
 const Webpack = require('webpack');
 const WebpackPlugin = require('hapi-webpack-plugin');
-const webpackCommonConfig = require('./webpack.config.js');
-const webpackDevConfig = require('./webpack.config.dev.js');
+const webpackCommonConfig = require('./webpack.config');
+const webpackDevConfig = require('./webpack.config.dev');
 const Inert = require('inert');
 
 // Create static HTTP server at port 3000 serving the public/ directory.

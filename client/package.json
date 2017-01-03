@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devServer": "node config/devServerHapi.js"
+    "devserver": "node config/devServerHapi.js"
   },
   "author": "",
   "license": "LGPL",
   "dependencies": {
+    "inert": "^4.1.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
   },

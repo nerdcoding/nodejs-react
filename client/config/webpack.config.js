@@ -13,7 +13,8 @@ const config = {
     entry: APP_DIR + '/app.js',
     output: {
         path: BUILD_DIR,
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/dist'
     },
 
     module : {

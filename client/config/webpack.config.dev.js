@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const webpackCommonConfig = require('./webpack.config.js');
+const webpackCommonConfig = require('./webpack.config');
 
 const devConfig = Object.assign({}, webpackCommonConfig, {
     entry: [
@@ -7,7 +7,7 @@ const devConfig = Object.assign({}, webpackCommonConfig, {
         'webpack-hot-middleware/client',
         webpackCommonConfig.APP_DIR + '/app.js',
     ],
-    pulgins: [
+    plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ]
