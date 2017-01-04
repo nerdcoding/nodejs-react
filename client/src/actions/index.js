@@ -19,7 +19,7 @@
 import {fetchJson} from '../backend/Backend';
 import { routeActions } from 'react-router-redux';
 
-import {ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO, LOAD_ALL_EMPLOYEES} from '../constants/ActionTypes';
+import {LOAD_ALL_EMPLOYEES} from '../constants/ActionTypes';
 
 export function loadEmployees() {
     return dispatch => fetchJson('/api/employees').then(allEmployees => {
@@ -46,27 +46,4 @@ export function pushPath(path) {
 
 export function replacePath(path) {
     return routeActions.replace(path);
-}
-
-var nextTodoId = 0;
-export function addTodo(text) {
-    return {
-        type: ADD_TODO,
-        id: nextTodoId++,
-        text
-    };
-}
-
-export function setVisibilityFilter(filter) {
-    return {
-        type: SET_VISIBILITY_FILTER,
-        filter
-    };
-}
-
-export function toggleTodo(id) {
-    return {
-        type: TOGGLE_TODO,
-        id
-    };
 }
