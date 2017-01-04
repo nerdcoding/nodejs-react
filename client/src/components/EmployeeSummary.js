@@ -1,5 +1,5 @@
 /*
- * EmployeeList.js
+ * EmployeeSummary.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -17,18 +17,19 @@
  */
 
 import React from 'react/react';
-import EmployeeSummary from './EmployeeSummary';
 
-export default function EmployeeList({ allEmployees}) {
+export default function EmployeeSummary({ employee }) {
     return (
-        <div className="row">
-            {allEmployees.map((employee) => {
-                return <EmployeeSummary key={employee._id} employee={employee} />;
-            })}
+        <div className="col-sm-4 col-md-4 col-lg-4 thumbnail" >
+            <img className="pull-left" src={'data:image/png;base64,' + employee.imageBase64}  />
+
+            <div className="caption">
+                <h4>{ employee.firstName }, { employee.lastName }</h4>
+            </div>
         </div>
     );
 }
 
-EmployeeList.propTypes = {
-    allEmployees: React.PropTypes.array.isRequired
+EmployeeSummary.propTypes = {
+    employee:       React.PropTypes.object.isRequired
 };
