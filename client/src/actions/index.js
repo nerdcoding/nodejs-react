@@ -16,7 +16,37 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import {ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO} from '../constants/ActionTypes';
+import {fetchJson} from '../backend/Backend';
+import { routeActions } from 'react-router-redux';
+
+import {ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO, LOAD_ALL_EMPLOYEES} from '../constants/ActionTypes';
+
+export function loadEmployees() {
+    return dispatch => fetchJson('/api/employees').then(allEmployees => {
+        dispatch({
+            type:  LOAD_ALL_EMPLOYEES,
+            employees: allEmployees
+        });
+    });
+}
+
+export function setTitle(title) {
+    return () => {
+        if (typeof document !== 'undefined') document.title = title;
+    }
+}
+
+export function routeToMain() {
+    return routeActions.push('/');
+}
+
+export function pushPath(path) {
+    return routeActions.push(path);
+}
+
+export function replacePath(path) {
+    return routeActions.replace(path);
+}
 
 var nextTodoId = 0;
 export function addTodo(text) {

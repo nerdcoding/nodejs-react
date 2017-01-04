@@ -16,22 +16,19 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import {createStore, combineReducers} from 'redux';
-import todos from './reducers/todos';
-import visibilityFilter from './reducers/visibilityFilter';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { syncHistory } from 'react-router-redux';
 
-const appStore = createStore(combineReducers({
-    todos,
-    visibilityFilter
-}));
+import history from '../history';
+import reducer from '../reducers';
 
-export default appStore;
-
-/*export default function appStore(state = {}, action) {
-    return {
-        visibilityFilter: visibilityFilter(state.visibilityFilter, action),
-        todos: todos(state.todos, action)
-    }
+export default function configureStore(initialState) {
+    const reduxRouterMiddleware = syncHistory(history);
+    return createStore(
+        reducer,
+        initialState,
+        applyMiddleware(thunk, reduxRouterMiddleware)
+    );
 }
 
-const todoApp = combineReducers()*/

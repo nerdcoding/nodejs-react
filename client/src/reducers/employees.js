@@ -1,5 +1,5 @@
 /*
- * app.js
+ * employees.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,22 +16,13 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
+import { LOAD_ALL_EMPLOYEES } from '../constants/ActionTypes';
 
-import { Router } from 'react-router';
-import { Provider } from 'react-redux'
-
-import history from './history';
-import store from './store/store';
-import routes from './routes';
-
-
-ReactDOM.render(
-    <Provider store={store}>
-        <Router history={history}>
-            { routes }
-        </Router>
-    </Provider>,
-    document.getElementById('mount')
-);
+export default function employees(state = [], action) {
+    switch (action.type) {
+        case LOAD_ALL_EMPLOYEES:
+            return action.employees;
+        default:
+            return state;
+    }
+}

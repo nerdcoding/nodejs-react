@@ -1,5 +1,5 @@
 /*
- * app.js
+ * EmployeeList.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,22 +16,18 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react/react';
 
-import { Router } from 'react-router';
-import { Provider } from 'react-redux'
+export default function EmployeeList({ allEmployees}) {
+    return (
+        <div>
+            {allEmployees.map((employee) => {
+                return <div key={employee._id}><p>Employee: {employee.firstName}</p></div>;
+            })}
+        </div>
+    );
+}
 
-import history from './history';
-import store from './store/store';
-import routes from './routes';
-
-
-ReactDOM.render(
-    <Provider store={store}>
-        <Router history={history}>
-            { routes }
-        </Router>
-    </Provider>,
-    document.getElementById('mount')
-);
+EmployeeList.propTypes = {
+    allEmployees:       React.PropTypes.array.isRequired
+};
