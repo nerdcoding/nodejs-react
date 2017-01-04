@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 
-import employees from './employees';
-
 import { routeReducer } from 'react-router-redux';
+import { i18nReducer } from 'react-redux-i18n';
+
+import employees from './employees';
 
 const rootReducer = combineReducers({
   employees,
-  routing: routeReducer
+  routing: routeReducer,
+  i18n: i18nReducer
 });
 
 export default rootReducer;

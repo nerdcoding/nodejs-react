@@ -22,6 +22,8 @@ import EmployeeList from './../components/EmployeeList';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import {I18n} from 'react-redux-i18n';
+
 class EmployeePage extends React.Component {
 
     componentDidMount() {
@@ -29,7 +31,7 @@ class EmployeePage extends React.Component {
     }
 
     render() {
-        this.props.setTitle('Overview - List of all employees');
+        this.props.setTitle(I18n.t('application.title'));
         const {employees} = this.props;
         return (
             <div>

@@ -19,16 +19,36 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { syncHistory } from 'react-router-redux';
+import { loadTranslations, setLocale, syncTranslationWithStore } from 'react-redux-i18n';
 
 import history from '../history';
 import reducer from '../reducers';
 
 export default function configureStore(initialState) {
     const reduxRouterMiddleware = syncHistory(history);
-    return createStore(
+    const store = createStore(
         reducer,
         initialState,
-        applyMiddleware(thunk, reduxRouterMiddleware)
+        applyMiddleware(thunk, reduxRouterMiddleware),
     );
+    syncTranslationWithStore(store);
+    store.dispatch(loadTranslations(loadI18nTransaltions()));
+    store.dispatch(setLocale('en'));
+
+    return store;
 }
 
+function loadI18nTransaltions() {
+    return {
+        en: {
+            "application": {
+                "title": "Employee management application"
+            }
+        },
+        de: {
+            "application": {
+                "title": "Applikation zur Mitarbeiterverwaltung"
+            }
+        }
+    }
+}
