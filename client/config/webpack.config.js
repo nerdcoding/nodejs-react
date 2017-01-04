@@ -25,6 +25,7 @@ const config = {
                 loader: 'babel'
             }
         ]
-    }
+    },
+    devtool: 'source-map'
 };
 module.exports = config;
