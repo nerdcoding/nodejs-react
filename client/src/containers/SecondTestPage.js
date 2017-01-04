@@ -1,5 +1,5 @@
 /*
- * history.js
+ * SecondTestPage.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,10 +16,33 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-// https://github.com/rackt/react-router/blob/master/docs/advanced/NavigatingOutsideOfComponents.md
+import React, { PropTypes } from 'react';
 
-import { createHistory, createMemoryHistory } from 'history';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-const history = typeof window !== 'undefined' ? createHistory() : createMemoryHistory();
+import {I18n} from 'react-redux-i18n';
 
-export default history;
+class SecondTestPage extends React.Component {
+    render() {
+        this.props.setTitle(I18n.t('application.title'));
+        return (
+            <div>
+                <p>Second Test Page</p>
+            </div>
+        );
+    }
+}
+SecondTestPage.propTypes = {
+    setTitle: PropTypes.func.isRequired,
+    pushPath: PropTypes.func.isRequired
+};
+
+import * as Actions from '../actions';
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(Actions, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SecondTestPage);
+

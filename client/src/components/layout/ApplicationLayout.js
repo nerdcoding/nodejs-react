@@ -1,5 +1,5 @@
 /*
- * history.js
+ * ApplicationLayout.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,10 +16,22 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-// https://github.com/rackt/react-router/blob/master/docs/advanced/NavigatingOutsideOfComponents.md
+import React from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
-import { createHistory, createMemoryHistory } from 'history';
+export default function ApplicationLayout({children}) {
+    return (
+        <div>
+            <Navbar />
+            <div className="container">
+                {children}
+            </div>
+            <Footer />
+        </div>
+    );
+}
 
-const history = typeof window !== 'undefined' ? createHistory() : createMemoryHistory();
-
-export default history;
+ApplicationLayout.propTypes = {
+    children: React.PropTypes.element.isRequired
+};

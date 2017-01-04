@@ -1,5 +1,5 @@
 /*
- * history.js
+ * Footer.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,10 +16,19 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-// https://github.com/rackt/react-router/blob/master/docs/advanced/NavigatingOutsideOfComponents.md
+import React from 'react';
 
-import { createHistory, createMemoryHistory } from 'history';
-
-const history = typeof window !== 'undefined' ? createHistory() : createMemoryHistory();
-
-export default history;
+export default function Footer() {
+    return (
+        <div className="container">
+            <hr />
+            <footer>
+                <div className="row">
+                    <div className="col-lg-12">
+                        <p>&#x40; Copyright {new Date().getFullYear()}, nerdcoding.org</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    );
+}

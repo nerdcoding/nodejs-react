@@ -1,5 +1,5 @@
 /*
- * store.js
+ * storeConfiguration.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
