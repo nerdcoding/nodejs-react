@@ -17,7 +17,7 @@
  */
 
 import React, { PropTypes } from 'react';
-import EmployeeList from './../components/EmployeeList';
+import EmployeeList from '../components/employee/EmployeeList';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';

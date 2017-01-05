@@ -17,3 +17,7 @@ footer {
 .thumbnail img {
     width: 25%;
 }
+
+.top-buffer {
+    margin-top:40px;
+}

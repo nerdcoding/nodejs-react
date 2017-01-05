@@ -23,7 +23,7 @@ import { connect } from 'react-redux';
 
 import {I18n} from 'react-redux-i18n';
 
-import EmployeeDetails from '../components/EmployeeDetails';
+import EmployeeDetails from '../components/employee/details/EmployeeDetails';
 
 class EmployeeDetailsPage extends React.Component {
 

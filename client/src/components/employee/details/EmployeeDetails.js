@@ -17,17 +17,24 @@
  */
 
 import React from 'react/react';
-import EmployeeSummary from './EmployeeSummary';
+import {I18n, Localize} from 'react-redux-i18n';
+
+import EmployeePersonalData from './EmployeePersonalData'
+import EmployeeEmploymentContractData from './EmployeeEmploymentContractData'
 
 export default function EmployeeDetails({employee}) {
     return (
-        <div className="row">
-            <div className="col-sm-4 col-md-4 col-lg-4">
-                <img className="pull-left" src={'data:image/png;base64,' + employee.imageBase64}  />
+        <div>
+            <div className="row">
+                <div className="col-sm-2 col-md-2 col-lg-2">
+                    <img className="pull-left" src={'data:image/png;base64,' + employee.imageBase64}  />
+                </div>
+                <div className="col-sm-10 col-md-10 col-lg-10">
+                    <h2>{ employee.firstName }, { employee.lastName }</h2>
+                </div>
             </div>
-            <div className="col-sm-8 col-md-8 col-lg-8 caption">
-                <h4>{ employee.firstName }, { employee.lastName }</h4>
-            </div>
+            <EmployeePersonalData employee={employee} />
+            <EmployeeEmploymentContractData employee={employee} />
         </div>
     );
 }
