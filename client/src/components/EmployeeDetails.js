@@ -1,5 +1,5 @@
 /*
- * ActionTypes.js
+ * EmployeeDetails.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,5 +16,22 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-export const LOAD_ALL_EMPLOYEES = 'LOAD_ALL_EMPLOYEES';
-export const LOAD_EMPLOYEES_BY_ID = 'LOAD_EMPLOYEES_BY_ID';
+import React from 'react/react';
+import EmployeeSummary from './EmployeeSummary';
+
+export default function EmployeeDetails({employee}) {
+    return (
+        <div className="row">
+            <div className="col-sm-4 col-md-4 col-lg-4">
+                <img className="pull-left" src={'data:image/png;base64,' + employee.imageBase64}  />
+            </div>
+            <div className="col-sm-8 col-md-8 col-lg-8 caption">
+                <h4>{ employee.firstName }, { employee.lastName }</h4>
+            </div>
+        </div>
+    );
+}
+
+EmployeeDetails.propTypes = {
+    employee: React.PropTypes.object.isRequired
+};

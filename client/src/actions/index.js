@@ -19,13 +19,22 @@
 import {fetchJson} from '../backend/Backend';
 import { routeActions } from 'react-router-redux';
 
-import {LOAD_ALL_EMPLOYEES} from '../constants/ActionTypes';
+import {LOAD_ALL_EMPLOYEES, LOAD_EMPLOYEES_BY_ID} from '../constants/ActionTypes';
 
 export function loadEmployees() {
     return dispatch => fetchJson('/api/employees').then(allEmployees => {
         dispatch({
             type:  LOAD_ALL_EMPLOYEES,
             employees: allEmployees
+        });
+    });
+}
+
+export function loadEmployeeById(employeeId) {
+    return dispatch => fetchJson(`/api/employees/${employeeId}`).then(employee => {
+        dispatch({
+            type: LOAD_EMPLOYEES_BY_ID,
+            currentEmployee: employee
         });
     });
 }

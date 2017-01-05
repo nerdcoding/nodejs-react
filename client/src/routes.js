@@ -20,14 +20,16 @@ import React from 'react';
 import { Route, Redirect } from 'react-router';
 
 import ApplicationLayout from './components/layout/ApplicationLayout';
-import EmployeePage from './containers/EmployeePage';
+import EmployeeOverviewPage from './containers/EmployeeOverviewPage';
+import EmployeeDetailsPage from './containers/EmployeeDetailsPage';
 import SecondTestPage from './containers/SecondTestPage';
 
 const routes =
   <Route>
     <Redirect from="/" to="/employees"/>
     <Route path="/" component={ApplicationLayout}>
-        <Route path="employees" component={EmployeePage}/>
+        <Route path="employees" component={EmployeeOverviewPage}/>
+        <Route path="employees/:id" component={EmployeeDetailsPage}/>
         <Route path="second" component={SecondTestPage}/>
     </Route>
   </Route>;

@@ -17,15 +17,18 @@
  */
 
 import React from 'react/react';
+import { Link } from 'react-router';
 
 export default function EmployeeSummary({ employee }) {
     return (
         <div className="col-sm-4 col-md-4 col-lg-4 thumbnail" >
-            <img className="pull-left" src={'data:image/png;base64,' + employee.imageBase64}  />
+            <Link to={`/employees/${employee._id}`}>
+                <img className="pull-left" src={'data:image/png;base64,' + employee.imageBase64}  />
 
-            <div className="caption">
-                <h4>{ employee.firstName }, { employee.lastName }</h4>
-            </div>
+                <div className="caption">
+                    <h4>{ employee.firstName }, { employee.lastName }</h4>
+                </div>
+            </Link>
         </div>
     );
 }

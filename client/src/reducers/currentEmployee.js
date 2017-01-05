@@ -1,5 +1,5 @@
 /*
- * ActionTypes.js
+ * currentEmployee.js
  *
  * Copyright (c) 2017, Tobias Koltsch. All rights reserved.
  *
@@ -16,5 +16,13 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-export const LOAD_ALL_EMPLOYEES = 'LOAD_ALL_EMPLOYEES';
-export const LOAD_EMPLOYEES_BY_ID = 'LOAD_EMPLOYEES_BY_ID';
+import { LOAD_EMPLOYEES_BY_ID } from '../constants/ActionTypes';
+
+export default function currentEmployee(state = null, action) {
+    switch (action.type) {
+        case LOAD_EMPLOYEES_BY_ID:
+            return action.currentEmployee;
+        default:
+            return state;
+    }
+}
