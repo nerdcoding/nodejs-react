@@ -19,30 +19,36 @@
 import React from 'react';
 import history from '../../history'
 
-export default function Navbar() {
-    return (
-        <nav className="navbar navbar-inverse navbar-fixed-top">
-            <div className="container">
-                <div className="navbar-header">
-                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span className="sr-only">Toggle navigation</span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                    </button>
-                    <a className="navbar-brand" onClick={() => history.push('/')}>ExampleApp</a>
-                </div>
+import { I18n } from 'react-redux-i18n';
 
-                <div id="navbar" className="navbar-collapse collapse">
-                    <ul className="nav navbar-nav">
-                        <li><a className="navbar-brand" onClick={() => history.push('employees') }>Liste</a></li>
-                        <li><a className="navbar-brand" onClick={() => history.push('second') }>Zweite Seite</a></li>
-                    </ul>
-                    <ul className="nav navbar-nav navbar-right">
-                        <li></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    );
+export default class Navbar extends React.Component {
+
+    render() {
+      const {routing} = this.props;
+      const currentPathname = routing.location.pathname;
+
+      return (
+          <div className="masthead">
+              <h3 className="text-muted">Project name</h3>
+              <nav>
+                  <ul className="nav nav-justified">
+                      <li className={ currentPathname.endsWith('employees') ? 'active' : null } >
+                          <a onClick={() => history.push('employees') }>
+                              {I18n.t('navbar.employeeOverview')}
+                          </a>
+                      </li>
+                      <li className={ currentPathname.endsWith('second') ? 'active' : null } >
+                          <a onClick={() => history.push('second') }>
+                              {I18n.t('navbar.testPage')}
+                          </a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      );
+    }
 }
+
+Navbar.propTypes = {
+    routing: React.PropTypes.object
+};

@@ -19,7 +19,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router';
 
-import ApplicationLayout from './components/layout/ApplicationLayout';
+import ApplicationLayoutPage from './containers/ApplicationLayoutPage';
 import EmployeeOverviewPage from './containers/EmployeeOverviewPage';
 import EmployeeDetailsPage from './containers/EmployeeDetailsPage';
 import SecondTestPage from './containers/SecondTestPage';
@@ -27,7 +27,7 @@ import SecondTestPage from './containers/SecondTestPage';
 const routes =
   <Route>
     <Redirect from="/" to="/employees"/>
-    <Route path="/" component={ApplicationLayout}>
+    <Route path="/" component={ApplicationLayoutPage}>
         <Route path="employees" component={EmployeeOverviewPage}/>
         <Route path="employees/:id" component={EmployeeDetailsPage}/>
         <Route path="second" component={SecondTestPage}/>

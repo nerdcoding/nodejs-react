@@ -17,7 +17,6 @@
  */
 
 import React from 'react/react';
-import {I18n, Localize} from 'react-redux-i18n';
 
 import EmployeePersonalData from './EmployeePersonalData'
 import EmployeeEmploymentContractData from './EmployeeEmploymentContractData'

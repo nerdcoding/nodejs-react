@@ -46,7 +46,7 @@ class EmployeeDetailsPage extends React.Component {
         } else {
             setTitle(I18n.t('application.title'));
             return (
-                <div><p>Employee is not loaded</p></div>);
+                <div><p>{I18n.t('application.employee.notLoaded')}</p></div>);
         }
     }
 }

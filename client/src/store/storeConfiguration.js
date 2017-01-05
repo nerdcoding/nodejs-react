@@ -41,6 +41,10 @@ export default function configureStore(initialState) {
 function loadI18nTransaltions() {
     return {
         en: {
+            "navbar": {
+                "employeeOverview": "Employee Overview",
+                "testPage": "Test page"
+            },
             "application": {
                 "title": "Employee management application",
                 "employee": {
@@ -67,7 +71,8 @@ function loadI18nTransaltions() {
                         "eMail": "E-mail"
                     },
                     "FEMALE": "Female",
-                    "MALE": "Male"
+                    "MALE": "Male",
+                    "notLoaded": "Employee was not loaded.."
                 },
                 "employmentContract": {
                     "title": "Employment contract",
@@ -100,6 +105,10 @@ function loadI18nTransaltions() {
             }
         },
         de: {
+            "navbar": {
+                "employeeOverview": "Mitarbeiter Übersicht",
+                "testPage": "Testseite"
+            },
             "application": {
                 "title": "Applikation zur Mitarbeiterverwaltung",
                 "employee": {
@@ -126,7 +135,8 @@ function loadI18nTransaltions() {
                         "eMail": "E-Mail"
                     },
                     "FEMALE": "Weiblich",
-                    "MALE": "Männlich"
+                    "MALE": "Männlich",
+                    "notLoaded": "Mitarbeiter wurde noch nicht geladen."
                 },
                 "employmentContract": {
                     "title": "Anstellungsvertrag",
