@@ -4,8 +4,7 @@
  * Copyright (c) 2016, Tobias Koltsch. All rights reserved.
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published
- * by the Free Software Foundation, either version 3 of the License, or
+sy the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -15,40 +14,70 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
+var paymentDao = require('../../app_server/dao/payments-dao');
 
 module.exports.createPayment = function(req, res) {
-    console.log('createPayment');
-    sendJsonResponse(res, 200, {
-        "method": "createPayment",
-        "employee parameter": req.params.employeeId
-    });
+    if (req.params && req.params.employeeId && req.body) {
+        paymentDao.createPayment(req.params.employeeId, req.body, function(err, createdPayment) {
+            if (err) {
+                sendJsonResponse(res, 400, err);
+            } else {
+                sendJsonResponse(res, 200, createdPayment);
+            }
+        });
+    } else {
+        sendJsonResponse(res, 400, {
+            "message": "No employee was provided"
+        });
+    }
 };
 
-module.exports.findPaymentById = function(req, res) {
-    console.log('findPaymentById');
-    sendJsonResponse(res, 200, {
-        "method": "createPayment",
-        "employee parameter": req.params.employeeId,
-        "payment parameter": req.params.paymentId
-    });
+module.exports.findPayments = function(req, res) {
+    if (req.params && req.params.employeeId) {
+        paymentDao.findAllPaymentsForEmployeeId(req.params.employeeId, function(err, payments) {
+            if (err) {
+                sendJsonResponse(res, 404, err);
+            } else {
+                sendJsonResponse(res, 200, payments);
+            }
+        });
+    } else {
+        sendJsonResponse(res, 400, {
+            "message": "No employeeId was provided"
+        });
+    }
 };
 
 module.exports.updatePayment = function(req, res) {
-    console.log('updatePayment');
-    sendJsonResponse(res, 200, {
-        "method": "updatePayment",
-        "employee parameter": req.params.employeeId,
-        "payment parameter": req.params.paymentId
-    });
+    if (req.params && req.params.employeeId && req.params.paymentId && req.body) {
+        paymentDao.updatePayment(req.params.employeeId, req.params.paymentId, req.body, function(err, createdPayment) {
+            if (err) {
+                sendJsonResponse(res, 400, err);
+            } else {
+                sendJsonResponse(res, 200, createdPayment);
+            }
+        });
+    } else {
+        sendJsonResponse(res, 400, {
+            "message": "No employee was provided"
+        });
+    }
 };
 
 module.exports.deletePayment = function(req, res) {
-    console.log('deletePayment');
-    sendJsonResponse(res, 200, {
-        "method": "deletePayment",
-        "employee parameter": req.params.employeeId,
-        "payment parameter": req.params.paymentId
-    });
+    if (req.params && req.params.employeeId && req.params.paymentId) {
+        paymentDao.deletePayment(req.params.employeeId, req.params.paymentId, function(err, createdPayment) {
+            if (err) {
+                sendJsonResponse(res, 400, err);
+            } else {
+                sendJsonResponse(res, 200, createdPayment);
+            }
+        });
+    } else {
+        sendJsonResponse(res, 400, {
+            "message": "No employee was provided"
+        });
+    }
 };
 
 var sendJsonResponse = function(res, status, content) {

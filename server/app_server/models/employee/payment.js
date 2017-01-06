@@ -19,7 +19,6 @@
 var mongoose = require('mongoose');
 
 module.exports.paymentSchema = new mongoose.Schema({
-    id: {type: String, required: true},
     salary: {type: Number, required: true, min: 0},
     validFrom: {type: Date, required: true},
     weeklyWorkingHours: Number

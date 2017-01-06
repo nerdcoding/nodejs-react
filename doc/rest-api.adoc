@@ -32,10 +32,10 @@
 |/employees/{employeeId}/payments
 |http://127.0.0.1:3000/api/employees/123/payments
 
-|Read a specific payment
+|Get aall payments
 |GET
-|/employees/{employeeId}/payments/{paymentId}
-|http://127.0.0.1:3000/api/employees/123/payments/4711
+|/employees/{employeeId}/payments/
+|http://127.0.0.1:3000/api/employees/123/payments
 
 |Update a specific payment
 |PUT

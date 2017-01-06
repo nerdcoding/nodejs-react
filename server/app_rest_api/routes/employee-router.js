@@ -31,7 +31,7 @@ router.delete('/employees/:employeeId', employeeController.deleteEmployee);
 
 // payments
 router.post('/employees/:employeeId/payments', paymentsController.createPayment);
-router.get('/employees/:employeeId/payments/:paymentId', paymentsController.findPaymentById);
+router.get('/employees/:employeeId/payments', paymentsController.findPayments);
 router.put('/employees/:employeeId/payments/:paymentId', paymentsController.updatePayment);
 router.delete('/employees/:employeeId/payments/:paymentId', paymentsController.deletePayment);
 
