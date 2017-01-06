@@ -22,6 +22,7 @@ import { Route, Redirect } from 'react-router';
 import ApplicationLayoutPage from './containers/ApplicationLayoutPage';
 import EmployeeOverviewPage from './containers/EmployeeOverviewPage';
 import EmployeeDetailsPage from './containers/EmployeeDetailsPage';
+import FirstTestPage from './containers/FirstTestPage';
 import SecondTestPage from './containers/SecondTestPage';
 
 const routes =
@@ -30,6 +31,7 @@ const routes =
     <Route path="/" component={ApplicationLayoutPage}>
         <Route path="employees" component={EmployeeOverviewPage}/>
         <Route path="employees/:id" component={EmployeeDetailsPage}/>
+        <Route path="first" component={FirstTestPage}/>
         <Route path="second" component={SecondTestPage}/>
     </Route>
   </Route>;

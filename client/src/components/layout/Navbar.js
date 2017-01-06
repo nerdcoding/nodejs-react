@@ -37,9 +37,14 @@ export default class Navbar extends React.Component {
                               {I18n.t('navbar.employeeOverview')}
                           </a>
                       </li>
+                      <li className={ currentPathname.endsWith('first') ? 'active' : null } >
+                          <a onClick={() => history.push('first') }>
+                              {I18n.t('navbar.testPage1')}
+                          </a>
+                      </li>
                       <li className={ currentPathname.endsWith('second') ? 'active' : null } >
                           <a onClick={() => history.push('second') }>
-                              {I18n.t('navbar.testPage')}
+                              {I18n.t('navbar.testPage2')}
                           </a>
                       </li>
                   </ul>

@@ -107,7 +107,8 @@ function loadI18nTransaltions() {
         de: {
             "navbar": {
                 "employeeOverview": "Mitarbeiter Übersicht",
-                "testPage": "Testseite"
+                "testPage1": "Testseite1",
+                "testPage2": "Testseite2"
             },
             "application": {
                 "title": "Applikation zur Mitarbeiterverwaltung",
