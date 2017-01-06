@@ -28,12 +28,12 @@ import EmployeeDetails from '../components/employee/details/EmployeeDetails';
 class EmployeeDetailsPage extends React.Component {
 
     componentDidMount() {
-        this.props.loadEmployeeById(this.props.params.id);
+        this.props.loadEmployeeByIdWithPayments(this.props.params.id);
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.params.id !== this.props.params.id) {
-            this.props.loadEmployeeById(nextProps.params.id);
+            this.props.loadEmployeeByIdWithPayments(nextProps.params.id);
         }
     }
 
@@ -52,7 +52,8 @@ class EmployeeDetailsPage extends React.Component {
 }
 EmployeeDetailsPage.propTypes = {
     currentEmployee: PropTypes.object,
-    loadEmployeeById: PropTypes.func.isRequired,
+    paymentsOfCurrentEmployee: PropTypes.array,
+    loadEmployeeByIdWithPayments: PropTypes.func.isRequired,
     setTitle: PropTypes.func.isRequired
 };
 
@@ -60,7 +61,8 @@ import * as Actions from '../actions';
 
 function mapStateToProps(state) {
     return {
-        currentEmployee: state.currentEmployee
+        currentEmployee: state.currentEmployee,
+        paymentsOfCurrentEmployee: state.paymentsOfCurrentEmployee
     };
 }
 

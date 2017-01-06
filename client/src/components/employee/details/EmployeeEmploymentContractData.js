@@ -19,6 +19,8 @@
 import React from 'react/react';
 import {I18n, Localize} from 'react-redux-i18n';
 
+import EmployeePaymentsTable from './EmployeePaymentsTable';
+
 export default function EmployeeEmploymentContractData({employee}) {
     return (
         <div>
@@ -49,6 +51,7 @@ export default function EmployeeEmploymentContractData({employee}) {
                     </p>
                 </div>
                 <div className="col-sm-4 col-md-4 col-lg-4">
+                    <EmployeePaymentsTable employee={employee} />
                 </div>
             </div>
         </div>
