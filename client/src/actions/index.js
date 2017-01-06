@@ -16,10 +16,10 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/lgpl.txt>.
  */
 
-import {fetchJson} from '../backend/Backend';
+import {fetchJson, sendJson} from '../backend/Backend';
 import { routeActions } from 'react-router-redux';
 
-import {LOAD_ALL_EMPLOYEES, LOAD_EMPLOYEES_BY_ID_WITH_PAYMENTS}  from '../constants/ActionTypes';
+import {LOAD_ALL_EMPLOYEES, LOAD_EMPLOYEES_BY_ID_WITH_PAYMENTS, UPDATE_EMPLOYEE}  from '../constants/ActionTypes';
 
 export function loadEmployees() {
     return dispatch => fetchJson('/api/employees').then(allEmployees => {
@@ -38,6 +38,19 @@ export function loadEmployeeByIdWithPayments(employeeId) {
                 type: LOAD_EMPLOYEES_BY_ID_WITH_PAYMENTS,
                 currentEmployee: employee
             });
+        });
+    });
+}
+
+export function updateEmployee(employee) {
+    return dispatch => sendJson('put', `/api/employees/${employee._id}`, employee).then(updatedEmployee => {
+        fetchJson(`/api/employees/${updatedEmployee._id}/payments`).then(payments => {
+            updatedEmployee["payments"] = payments;
+            dispatch({
+                type: UPDATE_EMPLOYEE,
+                currentEmployee: updatedEmployee
+            });
+            dispatch(routeToMain());
         });
     });
 }

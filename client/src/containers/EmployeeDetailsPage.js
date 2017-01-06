@@ -38,11 +38,11 @@ class EmployeeDetailsPage extends React.Component {
     }
 
     render() {
-        const { currentEmployee, setTitle } = this.props;
+        const { currentEmployee, updateEmployee, routeToMain, setTitle } = this.props;
 
         if (currentEmployee) {
             setTitle(currentEmployee.firstName + " " + currentEmployee.lastName + " - " + I18n.t('application.title'));
-            return <EmployeeDetails employee={currentEmployee} />;
+            return <EmployeeDetails employee={currentEmployee} updateEmployee={updateEmployee} routeToMain={routeToMain} />;
         } else {
             setTitle(I18n.t('application.title'));
             return (
@@ -54,6 +54,8 @@ EmployeeDetailsPage.propTypes = {
     currentEmployee: PropTypes.object,
     paymentsOfCurrentEmployee: PropTypes.array,
     loadEmployeeByIdWithPayments: PropTypes.func.isRequired,
+    updateEmployee: PropTypes.func.isRequired,
+    routeToMain: PropTypes.func.isRequired,
     setTitle: PropTypes.func.isRequired
 };
 

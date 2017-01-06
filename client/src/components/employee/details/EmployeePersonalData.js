@@ -19,7 +19,7 @@
 import React from 'react/react';
 import {I18n, Localize} from 'react-redux-i18n';
 
-export default function EmployeePersonalData({employee}) {
+export default function EmployeePersonalData({employee, onChange}) {
     return (
             <div>
                 <div className="row top-buffer">
@@ -31,12 +31,18 @@ export default function EmployeePersonalData({employee}) {
                     <div className="col-sm-4 col-md-4 col-lg-4">
                         <h4><strong>{I18n.t('application.employee.privateData')}</strong></h4>
                         <p>
-                            <strong>{I18n.t('application.employee.firstName')}:</strong> { employee.firstName } <br/>
-                            <strong>{I18n.t('application.employee.lastName')}:</strong> { employee.lastName } <br/>
-                            <strong>{I18n.t('application.employee.gender')}:</strong> {I18n.t('application.employee.' + employee.gender)} <br/>
-                            <strong>{I18n.t('application.employee.dayOfBirth')}:</strong> <Localize value={ employee.dayOfBirth } dateFormat="date.long"/> <br/>
-                            <strong>{I18n.t('application.employee.nationality')}:</strong> { employee.nationality } <br/>
-                            <strong>{I18n.t('application.employee.phoneNumber')}:</strong> { employee.phoneNumber } <br/>
+                            <strong>{I18n.t('application.employee.firstName')}: </strong>
+                            <input type="text" name="firstName" value={ employee.firstName } onChange={onChange} /> <br/>
+                            <strong>{I18n.t('application.employee.lastName')}: </strong>
+                            <input type="text" name="lastName" value={ employee.lastName } onChange={onChange} /> <br/>
+                            <strong>{I18n.t('application.employee.gender')}: </strong>
+                            <input type="text" name="gender" value={I18n.t('application.employee.' + employee.gender)} onChange={onChange} /> <br/>
+                            <strong>{I18n.t('application.employee.dayOfBirth')}: </strong>
+                            <input type="text" name="dayOfBirth" value={ I18n.l(employee.dayOfBirth, {dateFormat: 'date.long'}) } onChange={onChange} /> <br/>
+                            <strong>{I18n.t('application.employee.nationality')}: </strong>
+                            <input type="text" name="nationality" value={ employee.nationality } onChange={onChange} /> <br/>
+                            <strong>{I18n.t('application.employee.phoneNumber')}: </strong>
+                            <input type="text" name="phoneNumber" value={ employee.phoneNumber } onChange={onChange} /> <br/>
                         </p>
                     </div>
                     <div className="col-sm-4 col-md-4 col-lg-4">
@@ -63,5 +69,7 @@ export default function EmployeePersonalData({employee}) {
 }
 
 EmployeePersonalData.propTypes = {
-    employee: React.PropTypes.object.isRequired
+    employee: React.PropTypes.object.isRequired,
+    onChange: React.PropTypes.func.isRequired
+
 };
